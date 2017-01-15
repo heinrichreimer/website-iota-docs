@@ -282,6 +282,64 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </tbody></table>
 
+          <h1 id="errors">Errors</h1>
+
+<aside class="notice">This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>&rsquo;s frontmatter. Files are included in the order listed.</aside>
+
+<p>The Kittn API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request &ndash; Your request sucks</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized &ndash; Your API key is wrong</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found &ndash; The specified kitten could not be found</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone &ndash; The kitten requested has been removed from our servers</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&rsquo;m a teapot</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+</tr>
+</tbody></table>
+
           <h1 id="iota-introduction">IOTA Introduction</h1>
 
 <h2 id="what-is-iota">What is IOTA?</h2>
@@ -374,61 +432,204 @@ structure as well as the security of the Tangle:</p>
 
 <p><strong><em><a href="http://iotatoken.com/IOTA_Whitepaper.pdf">Whitepaper.pdf</a></em></strong></p>
 
-          <h1 id="errors">Errors</h1>
+          <h1 id="installation">Installation</h1>
 
-<aside class="notice">This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>&rsquo;s frontmatter. Files are included in the order listed.</aside>
+<h2 id="getting-started-with-nostalgia">Getting Started with Nostalgia</h2>
 
-<p>The Kittn API uses the following error codes:</p>
+<p>A simplistic User Interface (Nostalgia), is provided to help community members get started with using IOTA. The actual 
+GUI wallet will be released in a few days, so if you don&rsquo;t feel comfortable with Nostalgia, we suggest you to wait 
+until the wallet is ready.</p>
+
+<h3 id="1-download-nostalgia">1. Download Nostalgia</h3>
+
+<p>As a first step, you should download Nostalgia from our <a href="https://github.com/domschiener/nostalgia">GitHub</a>:</p>
+
+<aside class="success">
+    <b>Download Nostalgia</b><br>
+    <a href="https://github.com/domschiener/nostalgia">https://github.com/domschiener/nostalgia</a>
+</aside>
+<pre class="highlight shell"><code>git clone https://github.com/domschiener/nostalgia
+</code></pre>
+<p>If you are on Linux/Mac, you can simply open your console and clone the project:</p>
+
+<p>Otherwise you can also simply download the zipped version from here: 
+<a href="https://github.com/domschiener/nostalgia/archive/master.zip">https://github.com/domschiener/nostalgia/archive/master.zip</a></p>
+
+<h3 id="2-download-the-latest-iri">2. Download the latest IRI</h3>
+
+<p>Now obviously in order to get running, you need the IOTA Core. At the time of writing, the latest version happens to 
+be 1.1.0 which is available <a href="http://85.93.93.110/IRI-1.1.0.jar">here</a>:</p>
+
+<aside class="success">
+    <b>Download IRI</b><br>
+    <a href="http://85.93.93.110/IRI-1.1.0.jar">http://85.93.93.110/IRI-1.1.0.jar</a>
+</aside>
+
+<p>For this IRI version you need to start completely from scratch, so either start in a new folder, or delete your 
+database (all files with <code class="prettyprint">.iri</code> extensions).</p>
+
+<h3 id="3-find-neighbors">3. Find Neighbors</h3>
+
+<p>In order to run IRI, you need to have neighbors which want to pair with you. The easiest and fastest way to get 
+neighbors is through our <a href="https://slack.iotatoken.com/">Slack</a>, where you can join the <em>#nodesharing</em> channel to find 
+neighbors.</p>
+
+<p>It should be noted that you have to share your own IP and port with your neighbors as well, because IOTA relies on 
+mutual tethering for the data exchange. If you need help simply ask on Slack.</p>
+
+<h3 id="4-start-iri">4. Start IRI</h3>
+
+<p>Once you have a list of neighbors, you have to start IRI.</p>
+
+<h4 id="on-linux-mac">On Linux/Mac</h4>
+<pre class="highlight shell"><code>sudo java -jar IRI.jar YOURPORT udp://NODE1:PORT udp://NODE2:PORT
+</code></pre>
+<p>Now for Linux/Mac users, simply open up the terminal and type in:</p>
+
+<h4 id="on-windows">On Windows</h4>
+
+<p>Follow the tutorial from here: http://iotasupport.com/headlessnode.shtml#headless-node-on-windows</p>
+
+<h3 id="5-run-nostalgia">5. Run Nostalgia</h3>
+
+<p>Now in order to run nostalgia, all you need to do is open up the <code class="prettyprint">nostalgia.html</code> file in your web browser.</p>
+
+<aside class="notíce">
+    If you are using a different port than <b>14265</b>, change line 18 in <code>nostalgia.html</code> to the correct 
+    port.
+</aside>
+
+<p>Now all you have to do is type in your seed and hit enter in order to login. You should now see an empty screen and you 
+can start sending transactions and generating addresses.</p>
+
+<p>If you have already made transactions, Nostalgia will mark sent transactions in red (as in the picture below), so that 
+you know to which address you have sent tokens.</p>
+
+<p><img src="images/iota_installation_nostalgia.png" alt="Tangle" /></p>
+
+<p>In addition to that, you can also take a look at the entire bundle by clicking on &ldquo;Show Bundle&rdquo;. The transactions form 
+the bundle will be marked in blue. If you click on &ldquo;Show Bundle&rdquo; again they will disappear.</p>
+
+<p><img src="images/iota_installation_nostalgia_show_bundle.png" alt="Tangle" /></p>
+
+          <h1 id="documentation">Documentation</h1>
+
+<h2 id="api-introduction">API Introduction</h2>
+
+<p>The IOTA Java client makes it possible to interact with your local node and request certain information or actions to 
+be taken. Once your node is successfully setup, you can interface with it through port <code class="prettyprint">14265</code> by passing along a JSON 
+object which contains a specified command; and upon successful execution of the command, returns your requested 
+information.</p>
+
+<p>The main priority of the API as well as IRI itself is security. As such, anything that has to do with private keys is 
+done <em>client side</em>. For this we have provided several libraries that take care of this, but you can implement this 
+functionality yourself as well.</p>
+
+<p>For your convenience, we have added concrete examples on how to use the API in Curl, Python and NodeJS. If you are 
+using Javascript, you can simply follow along by using either XMLHttpRequest or jQuery. For NodeJS, please install the wonderful request npm package, as all our examples require the request package.</p>
+
+<p>For the rest of this documentation it is assumed that you have the IOTA client running at port <code class="prettyprint">14265</code> (or a port of 
+your choice, change your requests accordingly then).</p>
+
+<h2 id="making-requests">Making Requests</h2>
+
+<p>All API calls need to be sent to http://localhost:14265 (if you are using the standard port) via a POST HTTP request. 
+The data which will be sent is a <strong>JSON object</strong> which follows the same standard schema of:
+<code class="prettyprint">json
+{&#39;command&#39;: &#39;YOURCOMMANDHERE&#39;}
+</code> 
+Additional parameters are simply added as additional key-value pairs. If the command is successfully executed, your 
+requested information is returned as either an object or a stringified object (use <code class="prettyprint">json.parse</code> or equivalent to turn it 
+into an object).</p>
+
+<p>When making a request, make sure that the HTTP library you&rsquo;re using defines the <code class="prettyprint">Content-Length</code> of the data to be sent. 
+If this is not done automatically, manually add it via a header field e.g. 
+<code class="prettyprint">&#39;Content-Length&#39;: Buffer.byteLength(JSON.stringify(command))</code>.</p>
+
+<h2 id="cors">CORS</h2>
+
+<p>CORS is enabled.</p>
+
+<aside class="notice">
+    <b>Work in progress</b><br>
+</aside>
+
+<h2 id="errors">Errors</h2>
+
+<aside class="notice">
+    <b>Work in progress</b><br>
+</aside>
+
+<h2 id="fields">Fields</h2>
+
+<p>Here we list and describe all additional parameters which are required to be passed along for certain commands.</p>
 
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td><code class="prettyprint">seed</code></td>
+<td><code class="prettyprint">string</code></td>
+<td>Tryte encoded string which contains the accounts seed. The seed must be correctly encoded trytes: only uppercase latin letters and 9’s. No other characters are allowed. The maximum security level is 81-trytes, but you can choose longer/shorter seeds.</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
+<td><code class="prettyprint">address</code></td>
+<td><code class="prettyprint">string</code></td>
+<td>81-trytes long address of the recipient of a transaction.</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td><code class="prettyprint">value</code></td>
+<td><code class="prettyprint">string</code></td>
+<td>The quantity of IOTA’s which should be transferred.</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td><code class="prettyprint">message</code></td>
+<td><code class="prettyprint">string</code></td>
+<td>Tryte-encoded string which can contain arbitrary information and is sent alongside a transaction. The message value is publicly visible. The max value is 2187 trytes, which is 6561 trits (or roughly 1312 bytes).</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+<td><code class="prettyprint">transaction / hash</code></td>
+<td><code class="prettyprint">string</code></td>
+<td>Hash of a transaction. A single transaction hash is 81-chars long.</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+<td><code class="prettyprint">trytes</code></td>
+<td><code class="prettyprint">string</code></td>
+<td>The raw data of a transaction.</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
+<td><code class="prettyprint">bundles</code></td>
+<td><code class="prettyprint">list</code></td>
+<td>Contains a list of transaction bundles. Bundles are basically linked, individual transactions which were created with a single transfer. They are uniquely identified by a 27-char hash.</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
+<td><code class="prettyprint">addresses</code></td>
+<td><code class="prettyprint">list</code></td>
+<td>A list of addresses. A single address is 81-chars long.</td>
 </tr>
 <tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+<td><code class="prettyprint">tags</code></td>
+<td><code class="prettyprint">list</code></td>
+<td>The tag of a transaction.</td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+<td><code class="prettyprint">approvees</code></td>
+<td><code class="prettyprint">list</code></td>
+<td>A list of transaction which were referenced by this transaction</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td><code class="prettyprint">securityLevel</code></td>
+<td><code class="prettyprint">int</code></td>
+<td>Specifies the security level of your transaction. Can either by 0 (for 81-trit security), 1 (for 162-trit security) and 2 (for 243-trit security). Lower security transactions are faster to generate.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">minWeightMagnitude</code></td>
+<td><code class="prettyprint">int</code></td>
+<td>Specifies the amount of Proof of Work that will be carried out. Currently can only take the value 18.</td>
 </tr>
 </tbody></table>
 
