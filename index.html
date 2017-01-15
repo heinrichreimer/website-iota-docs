@@ -121,6 +121,9 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
+        <header class="app-bar">
+          IOTA API Reference
+        </header>
         <h1 id="introduction">Introduction</h1>
 
 <p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
@@ -278,6 +281,98 @@ Remember — a happy kitten is an authenticated kitten!
 <td>The ID of the kitten to retrieve</td>
 </tr>
 </tbody></table>
+
+          <h1 id="iota-introduction">IOTA Introduction</h1>
+
+<h2 id="what-is-iota">What is IOTA?</h2>
+
+<p><a href="https://iotatoken.com/">IOTA</a> is a revolutionary new transactional settlement and data transfer layer for the 
+Internet of Things. It’s based on a new distributed ledger, the Tangle, which overcomes the inefficiencies of current
+Blockchain designs and introduces a new way of reaching consensus in a decentralized peer-to-peer system. For the 
+first time ever, through IOTA people can transfer money without any fees. This means that even infinitesimally small
+nanopayments can be made through IOTA.</p>
+
+<p>IOTA is the missing puzzle piece for the Machine Economy to fully emerge and reach its desired potential. We envision
+IOTA to be the public, permissionless backbone for the Internet of Things that enables true interoperability between 
+all devices.</p>
+
+<aside class="warning">
+    <b>IOTA IS CURRENTLY IN BETA</b><br>
+    It should be noted that IOTA is currently still in Beta. This means that the current Java implementation is an
+    <b>unoptimized reference implementation</b>. Major improvements to performance, features as well as ease of use 
+    will be made over the coming months.
+</aside>
+
+<h2 id="glossary">Glossary</h2>
+
+<p>Because IOTA introduces some rather new concepts to the Blockchain-space, we will list a couple of terms which are 
+important to understand in order to fully grasp IOTA.</p>
+
+<p>This Glossary is work in progress. If you are uncertain about a term, please suggest one here so we can add it to this 
+glossary.</p>
+
+<h3 id="generic-terms">Generic Terms</h3>
+
+<ul>
+<li><strong>Peer to Peer Network</strong>: Decentralized network consisting of peers (or nodes) which are connected with each other 
+and perform some form of data sharing with each other.</li>
+<li><strong>Proof of Work</strong>: Algorithm which prevents Denial of Service and spam attacks on a network. Computationally hard 
+puzzle, but easy to verify.</li>
+<li><strong>Trinary</strong>: Alternative to binary, which consists of three states: true, false and unknown. Read more 
+<a href="https://en.wikipedia.org/wiki/Balanced_ternary">here</a>.</li>
+<li><strong>DAG</strong>: Directed Acyclic Graph. Is a specific data structure based on a graph without any directed cycles. Instead 
+of having a single branch with nodes having only one edge, in a DAG there can be multiple branches. Refer to 
+<a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">Wikipedia</a> for more information.</li>
+</ul>
+
+<h3 id="iota-terms">IOTA Terms</h3>
+
+<ul>
+<li><strong>Tangle</strong>: A directed acyclic graph (DAG) as a distributed ledger which stores all transaction data of the IOTA 
+network. It is a Blockchain without the blocks and the chain (so is it really a Blockchain?). The Tangle is the first 
+distributed ledger to achieve <strong>scalability</strong>, <strong>no fee transactions</strong>, <strong>data integrity</strong> and <strong>transmission</strong> as 
+well as <strong>quantum-computing protection</strong>. Contrary to today’s Blockchains, consensus is no-longer decoupled but 
+instead an intrinsic part of the system, leading to a completely decentralized and self-regulating peer-to-peer 
+network.
+<img src="images/iota_terms_tangle.png" alt="Tangle" /></li>
+<li><strong>Seed</strong>:  String consisting only of uppercase latin letters and 9&rsquo;s which is used to access an account. A seed is 
+like a private key/password. <strong>Keep it secure and don&rsquo;t share it with anyone.</strong> If someone has access to your seed 
+they can access your account. The maximum security level for seed is 81-trytes (81 chars), but you can choose longer 
+seeds, the security of it just won&rsquo;t increase.</li>
+<li><strong>Tips</strong>:Transactions which have no other transactions referencing them.</li>
+<li><strong>Confirm/Validate</strong>: In order to broadcast a new transaction in IOTA, you must first validate two previous 
+transactions. This confirmation happens by validating the transaction trytes, the signatures and cross-checking for 
+conflicting transactions as well as the completion of a Proof of Work puzzle.</li>
+<li><strong>Branch/Trunk Transactions</strong>: Two transactions which were referenced and validated by another transaction.</li>
+<li><strong>Bundle</strong>: Transactions which are bundled (or grouped) together during the creation of a transfer.</li>
+</ul>
+
+<h2 id="faq">FAQ</h2>
+
+<h4 id="is-iota-inflationary-can-i-mine-iota-39-s"><strong>Is IOTA inflationary? Can I mine IOTA&rsquo;s?</strong></h4>
+
+<p>All IOTA&rsquo;s which will ever exist have been created with the genesis transaction. This means that the total supply of 
+IOTA&rsquo;s will always stay the same and you cannot &ldquo;mine&rdquo; IOTA&rsquo;s. Therefore keep in mind, if you do Proof of Work in IOTA 
+you are not generating new IOTA tokens, you&rsquo;re simply verifying other transactions.</p>
+
+<h4 id="what-is-the-total-supply-of-iota"><strong>What is the total supply of IOTA?</strong></h4>
+
+<p>The total supply of IOTA is <code class="prettyprint">(3^33-1) / 2</code>, which equals to a total number of IOTA&rsquo;s of <code class="prettyprint">2779530283277761</code>. IOTA is 
+specifically designed for machines, so this high supply makes IOTA optimal for tiny nanotransactions while still 
+keeping efficiency in mind. It also nicely fits into the <code class="prettyprint">MAX_SAFE_INTEGER</code> value in JavaScript.</p>
+
+<aside class="notice">
+    <b>WORK IN PROGRESS!</b><br>
+    This page is currently being worked on and improved.
+</aside>
+
+<h2 id="whitepaper">Whitepaper</h2>
+
+<p>The <a href="http://iotatoken.com/IOTA_Whitepaper.pdf">IOTA Whitepaper</a> which describes the main technology behind IOTA - the 
+Tangle - is available to read <a href="http://iotatoken.com/IOTA_Whitepaper.pdf">online</a>. It goes into greater detail about the 
+structure as well as the security of the Tangle:</p>
+
+<p><strong><em><a href="http://iotatoken.com/IOTA_Whitepaper.pdf">Whitepaper.pdf</a></em></strong></p>
 
           <h1 id="errors">Errors</h1>
 
